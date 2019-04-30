@@ -6,7 +6,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd" >
 
 	<!-- Services -->
-	<bean id="user-assignment.assignUserResourceTaskService" class="fr.paris.lutece.plugins.userassignment.service.task.AssignUserResourceTaskService" />
+	<bean id="user-assignment.assignUserResourceTaskService" class="fr.paris.lutece.plugins.workflow.modules.userassignment.service.task.AssignUserResourceTaskService" />
 	<bean id="user-assignment.assignUserResourceTaskConfigService" class="fr.paris.lutece.plugins.workflowcore.service.config.TaskConfigService" 
 	p:taskConfigDAO-ref="user-assignment.assignUserResourceTaskConfigDao" />
 	
