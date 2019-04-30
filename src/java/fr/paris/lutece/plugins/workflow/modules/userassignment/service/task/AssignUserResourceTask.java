@@ -29,6 +29,7 @@ private static final String MESSAGE_TASK_TITLE = "module.workflow.userassignment
         _resourceHistoryService = resourceHistoryService;
     }
 	
+	@Override
 	public void processTask( int nIdResourceHistory, HttpServletRequest request, Locale locale )
 	{
 		 ResourceHistory resourceHistory = _resourceHistoryService.findByPrimaryKey( nIdResourceHistory );
@@ -38,11 +39,6 @@ private static final String MESSAGE_TASK_TITLE = "module.workflow.userassignment
 		 AdminUser user = AdminUserHome.findByPrimaryKey( Integer.valueOf( strUnitSelectionId ) );
 		 
 		 _assignUserResourceTaskService.assignUserToResource( user, resourceHistory.getId( ), resourceHistory.getResourceType( ) );
-	}
-	
-	protected void saveTaskInformation( int nIdHistory )
-	{
-		// Nothing to do.
 	}
 
 	@Override
