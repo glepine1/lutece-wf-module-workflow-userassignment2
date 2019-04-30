@@ -5,7 +5,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd" >
 
 	<!-- Dao -->
-	<bean id="user-assignment.resourceUserDAOr" class="fr.paris.lutece.plugins.workflow.modules.userassignment.business.ResourceUserDAO" />
+	<bean id="user-assignment.resourceUserDAO" class="fr.paris.lutece.plugins.workflow.modules.userassignment.business.ResourceUserDAO" />
+	<bean id="user-assignment.assignUserResourceTaskConfigDao" class="fr.paris.lutece.plugins.workflow.modules.userassignment.business.AssignUserResourceTaskConfigDao" />
 	
 	<!-- AdminUserListProvide -->
 	<bean id="user-assignment.selfAssignAdminUserListProvider" class="fr.paris.lutece.plugins.workflow.modules.userassignment.business.SelfAssignAdminUserListProvider"/>
