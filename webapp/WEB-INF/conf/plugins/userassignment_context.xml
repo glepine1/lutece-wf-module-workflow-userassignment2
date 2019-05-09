@@ -6,38 +6,37 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd" >
 
 	<!-- Services -->
-	<bean id="user-assignment.assignUserResourceTaskService" class="fr.paris.lutece.plugins.workflow.modules.userassignment.service.task.AssignUserResourceTaskService" />
-	<bean id="user-assignment.assignUserResourceTaskConfigService" class="fr.paris.lutece.plugins.workflowcore.service.config.TaskConfigService" 
-	p:taskConfigDAO-ref="user-assignment.assignUserResourceTaskConfigDao" />
+	<bean id="userassignment.assignUserResourceTaskService" class="fr.paris.lutece.plugins.workflow.modules.userassignment.service.task.AssignUserResourceTaskService" />
+	<bean id="userassignment.assignUserResourceTaskConfigService" class="fr.paris.lutece.plugins.workflowcore.service.config.TaskConfigService" 
+	p:taskConfigDAO-ref="userassignment.assignUserResourceTaskConfigDao" />
 	
 	<!-- Dao -->
-	<bean id="user-assignment.resourceUserDAO" class="fr.paris.lutece.plugins.workflow.modules.userassignment.business.ResourceUserDAO" />
-	<bean id="user-assignment.assignUserResourceTaskConfigDao" class="fr.paris.lutece.plugins.workflow.modules.userassignment.business.AssignUserResourceTaskConfigDao" />
+	<bean id="userassignment.resourceUserDAO" class="fr.paris.lutece.plugins.workflow.modules.userassignment.business.ResourceUserDAO" />
+	<bean id="userassignment.assignUserResourceTaskConfigDao" class="fr.paris.lutece.plugins.workflow.modules.userassignment.business.AssignUserResourceTaskConfigDao" />
 	
 	<!-- AdminUserListProvide -->
-	<bean id="user-assignment.selfAssignAdminUserListProvider" class="fr.paris.lutece.plugins.workflow.modules.userassignment.business.SelfAssignAdminUserListProvider"/>
+	<bean id="userassignment.selfAssignAdminUserListProvider" class="fr.paris.lutece.plugins.workflow.modules.userassignment.business.SelfAssignAdminUserListProvider"/>
 
 	<!-- Task -->
-	<bean id="user-assignment.assignUserResourceTask"
+	<bean id="userassignment.assignUserResourceTask"
         class="fr.paris.lutece.plugins.workflow.modules.userassignment.service.task.AssignUserResourceTask"
         scope="prototype" />
         
-    <bean id="user-assignment.assignUserResourceTaskConfig" 
+    <bean id="userassignment.assignUserResourceTaskConfig" 
     	class="fr.paris.lutece.plugins.workflow.modules.userassignment.business.AssignUserResourceTaskConfig" scope="prototype" />
         
-    <bean id="user-assignment.assignUserResourceTypeTask"
+    <bean id="userassignment.assignUserResourceTypeTask"
         class="fr.paris.lutece.plugins.workflowcore.business.task.TaskType"
         p:key="assignUserResourceTask"
         p:titleI18nKey="module.workflow.userassignment.task.user.assign.title"
-        p:beanName="user-assignment.assignUserResourceTask"
-        p:configBeanName="user-assignment.assignUserResourceTaskConfig"
+        p:beanName="userassignment.assignUserResourceTask"
+        p:configBeanName="userassignment.assignUserResourceTaskConfig"
         p:taskForAutomaticAction="false"
         p:configRequired="true"
         p:formTaskRequired="true" />
         
-    <bean id="user-assignment.assignUserResourceTaskComponent"
+    <bean id="userassignment.assignUserResourceTaskComponent"
         class="fr.paris.lutece.plugins.workflow.modules.userassignment.web.task.AssignUserResourceTaskComponent"
-        p:taskType-ref="user-assignment.assignUserResourceTypeTask"
-        p:taskConfigService-ref="user-assignment.assignUserResourceTaskConfigService"
-        scope="prototype" />
+        p:taskType-ref="userassignment.assignUserResourceTypeTask"
+        p:taskConfigService-ref="userassignment.assignUserResourceTaskConfigService"/>
 </beans>
