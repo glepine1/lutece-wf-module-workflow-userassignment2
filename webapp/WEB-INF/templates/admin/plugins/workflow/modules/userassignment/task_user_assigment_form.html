@@ -8,6 +8,12 @@
 			           	${user_selection.firstName} ${user_selection.lastName}
 			        </@staticText>
 				</#list>
+			<#else>
+				<select id="user_selection_id" name="user_selection_id" class="form-control">
+					<#list list_user_selection as user_selection >
+						<option value="${user_selection.userId}"> ${user_selection.firstName} ${user_selection.lastName}</option>
+					</#list>
+				</select>
 			</#if>
 		</@formGroup>
 	<#else>
