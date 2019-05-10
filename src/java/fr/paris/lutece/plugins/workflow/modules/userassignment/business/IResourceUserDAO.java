@@ -35,5 +35,5 @@ public interface IResourceUserDAO {
 	 * @param userId
 	 * @return
 	 */
-	List<AdminUser> selectUserListByFormResponse( int resourceID, String resourceType, Plugin plugin );
+	List<AdminUser> selectUserListByResource( int resourceID, String resourceType, Plugin plugin );
 }

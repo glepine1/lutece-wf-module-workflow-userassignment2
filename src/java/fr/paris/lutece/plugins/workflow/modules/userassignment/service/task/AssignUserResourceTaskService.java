@@ -43,7 +43,7 @@ public class AssignUserResourceTaskService implements IAssignUserResourceTaskSer
 	@Override
 	public void assignUserToResource( AdminUser user, int resourceId, String resourceType )
 	{
-		List<AdminUser> assignedUsers = resourceUserDAO.selectUserListByFormResponse( resourceId, resourceType, workflowPlugin );
+		List<AdminUser> assignedUsers = resourceUserDAO.selectUserListByResource( resourceId, resourceType, workflowPlugin );
 		
 		boolean alreadyAssigned = null != assignedUsers.stream( )
 				.map( AdminUser::getUserId )
