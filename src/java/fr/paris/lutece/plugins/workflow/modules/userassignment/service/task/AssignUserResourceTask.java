@@ -44,7 +44,7 @@ private static final String MESSAGE_TASK_TITLE = "module.workflow.userassignment
 			 
 			 AdminUser user = AdminUserHome.findByPrimaryKey( Integer.valueOf( strUnitSelectionId ) );
 			 
-			 _assignUserResourceTaskService.assignUserToResource( user, resourceHistory.getId( ), resourceHistory.getResourceType( ) );
+			 _assignUserResourceTaskService.assignUserToResource( user, resourceHistory.getIdResource( ), resourceHistory.getResourceType( ) );
 			 
 			 saveUserTaskInformation(resourceHistory.getId( ), user );
 		 }
