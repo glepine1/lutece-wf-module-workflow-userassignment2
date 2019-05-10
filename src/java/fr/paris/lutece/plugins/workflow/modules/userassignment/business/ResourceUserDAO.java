@@ -16,10 +16,11 @@ import fr.paris.lutece.util.sql.DAOUtil;
 public class ResourceUserDAO implements IResourceUserDAO {
 	
 	// Queries
-	private static final String SQL_INSERT = "INSERT INTO workflow_resource_user (id, id_resource, resource_type, id_user) VALUES (?,?,?,?) ";
+	private static final String SQL_INSERT = "INSERT INTO workflow_resource_user (id, id_resource, resource_type, id_user, assignment_date, is_active ) VALUES (?,?,?,?,?,?) ";
 	private static final String SQL_DELETE = "DELETE FROM workflow_resource_user WHERE id = ? ";
-	private static final String SQL_SELECT_RESOURCE_BY_USER = "SELECT id, id_resource, resource_type, id_user FROM workflow_resource_user WHERE id_user = ? AND resource_type = ? ";
+	private static final String SQL_SELECT_RESOURCE_BY_USER = "SELECT id, id_resource, resource_type, id_user, assignment_date, is_active FROM workflow_resource_user WHERE id_user = ? AND resource_type = ? ";
 	private static final String SQL_SELECT_USER_BY_RESOURCE = "SELECT id_user FROM workflow_resource_user WHERE id_resource = ? AND resource_type = ? ";
+	private static final String SQL_DEACTIVATE_BY_USER_BY_RESOURCE = "UPDATE workflow_resource_user set is_active = 0 WHERE id_user = ? AND id_resource = ? AND resource_type = ? ";
 
 	@Override
 	public void insert( ResourceUser resource, Plugin plugin )
@@ -31,6 +32,8 @@ public class ResourceUserDAO implements IResourceUserDAO {
             daoUtil.setInt( ++nIndex, resource.getIdResource( ) );
             daoUtil.setString( ++nIndex, resource.getResourceType( ) );
             daoUtil.setInt( ++nIndex, resource.getAdminUser( ).getUserId( ) );
+            daoUtil.setTimestamp( ++nIndex, resource.getDateAssignment( ) );
+            daoUtil.setBoolean( ++nIndex, resource.isActive( ) );
 
             daoUtil.executeUpdate( );
             if ( daoUtil.nextGeneratedKey( ) )
@@ -73,6 +76,8 @@ public class ResourceUserDAO implements IResourceUserDAO {
             	resource.setIdResource( daoUtil.getInt( ++i ));
             	resource.setResourceType( daoUtil.getString( ++i ));
             	resource.setAdminUser( AdminUserHome.findByPrimaryKey( daoUtil.getInt( ++i ) ) );
+            	resource.setDateAssignment( daoUtil.getTimestamp( ++i ) );
+            	resource.setActive(  daoUtil.getBoolean( ++i ) );
             	result.add(resource);
             }
 		}
@@ -99,4 +104,17 @@ public class ResourceUserDAO implements IResourceUserDAO {
 		return result;
 	}
 
+	@Override
+	public void deactivateByUserResource(int userId, int resourceID, String resourceType, Plugin plugin) {
+		try ( DAOUtil daoUtil = new DAOUtil( SQL_DEACTIVATE_BY_USER_BY_RESOURCE, Statement.RETURN_GENERATED_KEYS, plugin ) )
+		{
+			int nIndex = 0;
+            daoUtil.setInt( ++nIndex, userId );
+            daoUtil.setInt( ++nIndex, resourceID );
+            daoUtil.setString( ++nIndex, resourceType );
+            
+            daoUtil.executeUpdate( );
+		}
+		
+	}
 }

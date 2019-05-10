@@ -1,5 +1,7 @@
 package fr.paris.lutece.plugins.workflow.modules.userassignment.business;
 
+import java.sql.Timestamp;
+
 import fr.paris.lutece.portal.business.user.AdminUser;
 
 /**
@@ -11,6 +13,8 @@ public class ResourceUser {
 	private int _idResource;
 	private String _resourceType;
 	private AdminUser _adminUser;
+	private Timestamp _dateAssignment;
+	private boolean _active;
 	
 	public ResourceUser( )
 	{
@@ -72,5 +76,33 @@ public class ResourceUser {
 	 */
 	public void setAdminUser(AdminUser _adminUser) {
 		this._adminUser = _adminUser;
+	}
+
+	/**
+	 * @return the _dateAssignmentDate
+	 */
+	public Timestamp getDateAssignment() {
+		return _dateAssignment;
+	}
+
+	/**
+	 * @param _dateAssignmentDate the _dateAssignmentDate to set
+	 */
+	public void setDateAssignment(Timestamp _dateAssignmentDate) {
+		this._dateAssignment = _dateAssignmentDate;
+	}
+
+	/**
+	 * @return the _bIsActive
+	 */
+	public boolean isActive() {
+		return _active;
+	}
+
+	/**
+	 * @param _bIsActive the _bIsActive to set
+	 */
+	public void setActive(boolean _bIsActive) {
+		this._active = _bIsActive;
 	}
 }

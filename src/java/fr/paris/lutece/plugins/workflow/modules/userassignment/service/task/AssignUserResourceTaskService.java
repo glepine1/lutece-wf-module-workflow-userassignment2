@@ -54,9 +54,10 @@ public class AssignUserResourceTaskService implements IAssignUserResourceTaskSer
 		if ( !alreadyAssigned )
 		{
 			ResourceUser resourceUser = new ResourceUser( );
-			resourceUser.setIdResource(resourceId);
-			resourceUser.setResourceType(resourceType);
-			resourceUser.setAdminUser(user);
+			resourceUser.setIdResource( resourceId );
+			resourceUser.setResourceType( resourceType );
+			resourceUser.setAdminUser( user );
+			resourceUser.setActive( true );
 			
 			resourceUserDAO.insert( resourceUser, workflowPlugin );
 		}
